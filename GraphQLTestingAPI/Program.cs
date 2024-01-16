@@ -14,8 +14,7 @@ builder.Services
     .AddGraphQLServer()
     //.RegisterDbContext<AppDbContext>()
     .AddQueryType<Query>();
-builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql("server=172.16.100.102;uid=root;pwd=1;database=graphqlapitesting;", 
-    new MySqlServerVersion(new Version(8, 0, 11))));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=helloapp.db"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

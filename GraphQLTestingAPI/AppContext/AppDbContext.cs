@@ -13,11 +13,8 @@ public class AppDbContext : DbContext
     {
     }
     
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseMySql(
-            "server=172.16.100.102;user=root;password=1;database=graphqlapitesting;", 
-            new MySqlServerVersion(new Version(8, 0, 11))
-        );
-    }
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     
+    // }
 }

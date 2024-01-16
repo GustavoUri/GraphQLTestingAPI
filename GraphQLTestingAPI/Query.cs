@@ -4,6 +4,6 @@ namespace GraphQLTestingAPI;
 
 public class Query
 {
-    // //[UseDbContext(typeof(AppDbContext))]
-    // public List<Post> GetPosts([Service] AppDbContext context) => context.Posts.ToList();
+    //[UseDbContext(typeof(AppDbContext))]
+    public List<Post> GetPosts([Service] AppDbContext context) => context.Posts.ToList();
 }

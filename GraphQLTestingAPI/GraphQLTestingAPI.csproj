@@ -10,6 +10,7 @@
         <PackageReference Include="HotChocolate.AspNetCore" Version="14.0.0-p.23" />
         <PackageReference Include="HotChocolate.Data.EntityFramework" Version="13.8.1" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.15" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.15">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
