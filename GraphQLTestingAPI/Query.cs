@@ -1,6 +1,9 @@
-﻿namespace GraphQLTestingAPI;
+﻿using GraphQLTestingAPI.Entities;
+using GraphQLTestingAPI.AppContext;
+namespace GraphQLTestingAPI;
 
 public class Query
 {
-    public string Hello(string name = "World") => $"Hello, {name}!";
+    // //[UseDbContext(typeof(AppDbContext))]
+    // public List<Post> GetPosts([Service] AppDbContext context) => context.Posts.ToList();
 }
