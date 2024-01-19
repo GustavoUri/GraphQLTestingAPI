@@ -3,7 +3,7 @@ using GraphQLTestingAPI.AppContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQLTestingAPI;
-[ExtendObjectType("query")]
+[ExtendObjectType("Query")]
 public class PostQuery
 {
     /// <summary>

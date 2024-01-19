@@ -3,7 +3,7 @@ using GraphQLTestingAPI.Entities;
 
 namespace GraphQLTestingAPI;
 
-[ExtendObjectType("mutation")]
+[ExtendObjectType("Mutation")]
 public class AuthorMutation
 {
     public async Task<Author> AddAuthor(AppDbContext context, string name, string email)

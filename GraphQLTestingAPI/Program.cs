@@ -16,16 +16,18 @@ builder.Services
     .AddErrorFilter<GraphQLErrorFilter>()
     .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = true)
     .RegisterDbContext<AppDbContext>(DbContextKind.Pooled)
-    .AddQueryType(q => q.Name("query"))
+    .AddQueryType(q => q.Name("Query"))
     .AddType<PostQuery>()
     .AddType<AuthorQuery>()
-    .AddMutationType(x => x.Name("mutation"))
+    .AddMutationType(x => x.Name("Mutation"))
     .AddType<PostMutation>()
     .AddType<AuthorMutation>()
     .AddProjections()
     .AddFiltering()
     .AddSorting();
-builder.Services.AddPooledDbContextFactory<AppDbContext>(options => options.UseSqlite("Data Source=helloapp.db"));
+builder.WebHost.UseUrls("http://localhost:5007");
+//builder.Services.AddPooledDbContextFactory<AppDbContext>(options => options.UseSqlite("Data Source=helloapp.db"));
+builder.Services.AddPooledDbContextFactory<AppDbContext>(options => options.UseMySql("server=172.16.100.102;user=root;password=1;database=graphqlapitesting;", new MySqlServerVersion(new Version(10, 1, 44))));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -3,7 +3,7 @@ using GraphQLTestingAPI.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQLTestingAPI;
-[ExtendObjectType("query")]
+[ExtendObjectType("Query")]
 public class AuthorQuery
 {
     /// <summary>

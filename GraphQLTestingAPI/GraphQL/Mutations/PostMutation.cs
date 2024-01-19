@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GraphQLTestingAPI;
 
-[ExtendObjectType("mutation")]
+[ExtendObjectType("Mutation")]
 public class PostMutation
 {
     public async Task<Post> AddPost(AppDbContext context, string title, string content, Guid authorId)
