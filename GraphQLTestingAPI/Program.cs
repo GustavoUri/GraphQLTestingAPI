@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddCors();
 //builder.Services.AddSwaggerGen();
 builder.Services
     .AddGraphQLServer()
@@ -29,7 +30,7 @@ builder.WebHost.UseUrls("http://localhost:5007");
 //builder.Services.AddPooledDbContextFactory<AppDbContext>(options => options.UseSqlite("Data Source=helloapp.db"));
 builder.Services.AddPooledDbContextFactory<AppDbContext>(options => options.UseMySql("server=172.16.100.102;user=root;password=1;database=graphqlapitesting;", new MySqlServerVersion(new Version(10, 1, 44))));
 var app = builder.Build();
-
+app.UseCors(corsPolicyBuilder => corsPolicyBuilder.AllowAnyOrigin());
 // Configure the HTTP request pipeline.
 // if (app.Environment.IsDevelopment())
 // {
