@@ -1,5 +1,5 @@
-﻿using GraphQLTestingAPI.AppContext;
-using GraphQLTestingAPI.Entities;
+﻿using GraphQLTestingAPI.Entities;
+using GraphQLTestingDataLayer.AppContext;
 
 namespace GraphQLTestingAPI;
 

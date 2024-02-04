@@ -23,4 +23,9 @@
       <Folder Include="Controllers" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\GraphQLTestingDataLayer\GraphQLTestingDataLayer.csproj" />
+      <ProjectReference Include="..\GraphQLTestingServices\GraphQLTestingServices.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,8 +1,11 @@
-﻿using GraphQLTestingAPI.AppContext;
+﻿using GraphQLTestingAPI.DTO;
 using GraphQLTestingAPI.Entities;
+using GraphQLTestingAPI.Services;
+using GraphQLTestingDataLayer.AppContext;
 using Microsoft.EntityFrameworkCore;
 
-namespace GraphQLTestingAPI;
+namespace GraphQLTestingAPI.GraphQL.Queries;
+
 [ExtendObjectType("Query")]
 public class AuthorQuery
 {
@@ -13,5 +16,8 @@ public class AuthorQuery
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    public List<Author> GetAuthors(AppDbContext context) => context.Authors.Include(x => x.Posts).ToList();
+    public IQueryable<AuthorDTO> GetAuthors([Service] AuthorService service)
+    {
+        return service.GetAuthors();
+    }
 }

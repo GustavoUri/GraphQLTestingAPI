@@ -1,5 +1,6 @@
-﻿using GraphQLTestingAPI.AppContext;
-using GraphQLTestingAPI.Entities;
+﻿using GraphQLTestingAPI.Entities;
+using GraphQLTestingDataLayer.AppContext;
+using HotChocolate.Subscriptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQLTestingAPI;
@@ -7,9 +8,10 @@ namespace GraphQLTestingAPI;
 [ExtendObjectType("Mutation")]
 public class PostMutation
 {
-    public async Task<Post> AddPost(AppDbContext context, string title, string content, Guid authorId)
+    public async Task<Post> AddPost([Service] ITopicEventSender sender, AppDbContext context, string title,
+        string content, Guid authorId, CancellationToken cancellationToken)
     {
-        var author = context.Authors.Include(x => x.Posts).FirstOrDefault(x => x.Id == authorId);
+        var author = await context.Authors.Include(x => x.Posts).FirstOrDefaultAsync(x => x.Id == authorId);
         if (author == null)
             throw new Exception("Нет автора с таким id");
         var newPost = new Post()
@@ -31,6 +33,7 @@ public class PostMutation
 
         context.Posts.Add(newPost);
         await context.SaveChangesAsync();
+        await sender.SendAsync(nameof(AddPost), newPost);
         return newPost;
     }
 
@@ -47,7 +50,7 @@ public class PostMutation
             if (author == null)
                 throw new Exception("Нет автора с таким id");
             if (author.Posts == null)
-                author.Posts = new List<Post>() { post };
+                author.Posts = new List<Post>() {post};
             else
                 author.Posts.Add(post);
 

@@ -1,7 +1,7 @@
 using GraphQLTestingAPI.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace GraphQLTestingAPI.AppContext;
+namespace GraphQLTestingDataLayer.AppContext;
 
 public class AppDbContext : DbContext
 {
