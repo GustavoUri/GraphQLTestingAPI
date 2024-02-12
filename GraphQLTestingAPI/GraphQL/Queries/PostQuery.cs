@@ -1,6 +1,5 @@
 ﻿using GraphQLTestingAPI.Entities;
-using GraphQLTestingAPI.AppContext;
-using Microsoft.EntityFrameworkCore;
+using GraphQLTestingDataLayer.AppContext;
 
 namespace GraphQLTestingAPI;
 [ExtendObjectType("Query")]
