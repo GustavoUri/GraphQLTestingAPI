@@ -1,11 +1,13 @@
 ﻿using GraphQLTestingAPI.AppContext;
 using GraphQLTestingAPI.Entities;
-
+using YouTrackSharp.Management;
+using YouTrackSharp.Users;
 namespace GraphQLTestingAPI;
 
 [ExtendObjectType("Mutation")]
 public class AuthorMutation
 {
+    private readonly IUserManagementService service;
     public async Task<Author> AddAuthor(AppDbContext context, string name, string email)
     {
         var author = new Author()
